@@ -1,0 +1,40 @@
+{
+  "description": "Prints a given string to the standard output",
+  "input_method": "stdin",
+  "parameters": {
+    "os_type": {
+      "type": "String",
+      "description": "The operating system type (windows or linux)",
+      "default": "linux"
+    },
+    "output_string": {
+      "type": "String",
+      "description": "The string to be printed",
+      "default": "Hello, World!"
+    }
+  },
+  "plans": {
+    "hello_world": {
+      "description": "Prints a given string to the standard output",
+      "parameters": {
+        "os_type": "$os_type",
+        "output_string": "$output_string"
+      },
+      "steps": [
+        {
+          "name": "hello_world",
+          "label": "Print '$output_string'",
+          "command": {
+            "name": "hello_world_script",
+            "task": "my_module::hello_world_script",
+            "arguments": {
+              "os_type": "$os_type",
+              "output_string": "$output_string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
