@@ -1,0 +1,17 @@
+{
+    "description": "Get all running Java processes",
+    "parameters": {},
+    "implementations": [
+      {
+        "name": "get_java_processes.sh",
+        "requirements": ["shell"],
+        "when": "facts.os.name == 'Linux'"
+      },
+      {
+        "name": "get_java_processes.ps1",
+        "requirements": ["powershell"],
+        "when": "facts.os.name == 'windows'"
+      }
+    ]
+  }
+  

@@ -1,0 +1,22 @@
+{
+    "description": "Kill a running Java process",
+    "parameters": {
+      "process_name": {
+        "type": "String",
+        "description": "The name of the Java process to kill"
+      }
+    },
+    "implementations": [
+      {
+        "name": "kill_java_process.sh",
+        "requirements": ["shell"],
+        "when": "facts.os.name == 'Linux'"
+      },
+      {
+        "name": "kill_java_process.ps1",
+        "requirements": ["powershell"],
+        "when": "facts.os.name == 'windows'"
+      }
+    ]
+  }
+  
