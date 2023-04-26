@@ -3,6 +3,7 @@ Here are some tasks!
 
 ## Easy transfer using WinSCP
 ```bash
+sudo usermod -aG users $USER
 sudo chown -R :users /etc/puppetlabs/code
 sudo chmod -R g+rw /etc/puppetlabs/code
 cd /etc/puppetlabs/code/environments/production/modules

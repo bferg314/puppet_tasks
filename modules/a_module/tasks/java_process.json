@@ -1,0 +1,29 @@
+{
+    "description": "Get or kill running Java processes",
+    "parameters": {
+        "action": {
+            "type": "Enum['get', 'kill']",
+            "description": "The action to perform: 'get' to get running Java processes or 'kill' to kill a specific process"
+        },
+        "process_name": {
+            "type": "Optional[String]",
+            "description": "The name of the Java process to kill (required for 'kill' action)"
+        }
+    },
+    "implementations": [
+        {
+            "name": "java_process.sh",
+            "requirements": [
+                "shell"
+            ],
+            "when": "facts.os.name == 'Linux'"
+        },
+        {
+            "name": "java_process.ps1",
+            "requirements": [
+                "powershell"
+            ],
+            "when": "facts.os.name == 'windows'"
+        }
+    ]
+}
