@@ -12,10 +12,11 @@ if [[ "$PT_action" == "get" ]]; then
         exit 1
     fi
 
-    processes=$(ps -ef | grep java | grep -v grep)
+    processes=$(ps -eo pid,user,%cpu,%mem,vsz,rss,tty,stat,start,time,command | grep java | grep -v grep | grep -v java_process.sh)
     if [ -z "$processes" ]; then
         echo "No Java processes found."
     else
+        echo "PID     USER   %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
         echo "$processes"
     fi
 elif [[ "$PT_action" == "kill" ]]; then

@@ -1,16 +1,16 @@
 # Kill the specified Java process
-if ([string]::IsNullOrWhiteSpace($env:PT_process_name)) {
-    Write-Error "Error: process_name parameter not provided."
-    exit 1
-}
+param(
+    [parameter(mandatory= $true)]
+    [string]$process_name
+)
 
-$process = Get-Process -Name $env:PT_process_name -ErrorAction SilentlyContinue
+$process = Get-Process -Name $process_name -ErrorAction SilentlyContinue
 if ($process) {
     Stop-Process -InputObject $process
-    Write-Output "Process '$env:PT_process_name' killed successfully."
+    Write-Output "Process '$process_name' killed successfully."
     exit 0
 }
 else {
-    Write-Error "Error: process '$env:PT_process_name' not found."
+    Write-Error "Error: process '$process_name' not found."
     exit 1
 }
