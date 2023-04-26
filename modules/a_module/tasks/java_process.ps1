@@ -1,11 +1,10 @@
 param(
-    [parameter(mandatory= $true)]
+    [parameter(mandatory = $true)]
     [ValidateSet("get", "kill")]
     [string]$action,
     [string]$process_name
-
 )
-  
+
 if ($action -eq "get") {
     # Get all running Java processes
     if (Get-Command Get-Process -ErrorAction SilentlyContinue) {
@@ -28,15 +27,16 @@ elseif ($action -eq "kill") {
         exit 1
     }
   
-    if (!(Get-Process -Name $process_name -ErrorAction SilentlyContinue)) {
+    if (!(Get-Process -ProcessName $process_name -ErrorAction SilentlyContinue)) {
         Write-Error "Error: process '$process_name' not found."
         exit 1
     }
   
-    if (Stop-Process -Name $process_name -ErrorAction SilentlyContinue) {
+    try {
+        Stop-Process -ProcessName $process_name -Force -ErrorAction Stop
         Write-Output "Process '$process_name' killed successfully."
     }
-    else {
+    catch {
         Write-Error "Error: failed to kill process '$process_name'."
         exit 1
     }
@@ -45,5 +45,3 @@ else {
     Write-Error "Error: invalid action parameter '$action'. Must be 'get' or 'kill'."
     exit 1
 }
-  
-  
