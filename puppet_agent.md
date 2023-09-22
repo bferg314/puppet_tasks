@@ -19,6 +19,8 @@ certname = {clientname}
 server = {puppetmastername}
 ```
 
+## Puppet Master
+Make sure you have updated your master server hosts file if needed so it knows how to get to the agent...  
 
 ## RPM
 ### Install
@@ -30,22 +32,41 @@ hostnamectl set-hostname {newnamehere} –static
 sudo vim /etc/hosts
 
 sudo rpm -Uvh https://yum.puppet.com/puppet7-release-el-8.noarch.rpm
-sudo yum install puppet-agent
+sudo dnf install puppet-agent -y
 
 vim ~/.bashrc
 export PATH=$PATH:/opt/puppetlabs/bin
 
+# update config
 sudo vim /etc/puppetlabs/puppet/puppet.conf
 
+# [main]
+# certname = {clientname}
+# server = {puppetmastername}
+
+# if the firewall is running... open the port for communication
+sudo firewall-cmd --zone=public --add-port=8140/tcp --permanent
+sudo firewall-cmd --reload
+
+# start the service
 sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+# validate connection as root
+su -
+puppet agent -t
 ```
 
 ## Deb
 ```bash
 sudo vim /etc/hosts
 
-wget https://apt.puppet.com/puppet7-release-jammy.deb
-sudo dpkg -i puppet7-release-jammy.deb
+# 22.02
+wget https://apt.puppet.com/puppet8-release-jammy.deb
+sudo dpkg -i puppet8-release-jammy.deb
+
+# 20.04
+wget https://apt.puppet.com/puppet8-release-focal.deb
+sudo dpkg -i puppet8-release-focal.deb
 
 sudo apt install puppet-agent
 sudo vim /etc/puppetlabs/puppet/puppet.conf

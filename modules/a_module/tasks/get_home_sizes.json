@@ -1,17 +1,20 @@
 {
-    "description": "Get the size of all home directories and user profiles",
-    "parameters": {},
-    "implementations": [
-      {
-        "name": "get_home_sizes.sh",
-        "requirements": ["shell"],
-        "when": "facts.os.name == 'Linux'"
-      },
-      {
-        "name": "get_home_sizes.ps1",
-        "requirements": ["powershell"],
-        "when": "facts.os.name == 'windows'"
-      }
-    ]
-  }
-  
+  "description": "Get the size of all home directories and user profiles",
+  "parameters": {},
+  "implementations": [
+    {
+      "name": "get_home_sizes.sh",
+      "requirements": [
+        "shell"
+      ],
+      "when": "facts.os.name == 'Linux'"
+    },
+    {
+      "name": "get_home_sizes.ps1",
+      "requirements": [
+        "powershell"
+      ],
+      "when": "facts.os.name == 'windows'"
+    }
+  ]
+}
