@@ -4,13 +4,11 @@
     "implementations": [
       {
         "name": "get_java_processes.sh",
-        "requirements": ["shell"],
-        "when": "facts.os.name == 'Linux'"
+        "requirements": ["shell"]
       },
       {
         "name": "get_java_processes.ps1",
-        "requirements": ["powershell"],
-        "when": "facts.os.name == 'windows'"
+        "requirements": ["powershell"]
       }
     ]
   }
