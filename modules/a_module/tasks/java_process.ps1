@@ -35,6 +35,7 @@ elseif ($action -eq "kill") {
     try {
         Stop-Process -ProcessName $process_name -Force -ErrorAction Stop
         Write-Output "Process '$process_name' killed successfully."
+
     }
     catch {
         Write-Error "Error: failed to kill process '$process_name'."

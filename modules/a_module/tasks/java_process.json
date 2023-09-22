@@ -15,15 +15,13 @@
             "name": "java_process.sh",
             "requirements": [
                 "shell"
-            ],
-            "when": "facts.os.name == 'Linux'"
+            ]
         },
         {
             "name": "java_process.ps1",
             "requirements": [
                 "powershell"
-            ],
-            "when": "facts.os.name == 'windows'"
+            ]
         }
     ]
 }
