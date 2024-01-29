@@ -2,7 +2,7 @@
 ## Generic Prep
 ```bash
 # Lock in hostname
-hostnamectl set-hostname {newnamehere} –static
+hostnamectl set-hostname {newnamehere}
 
 # Add puppetmaster
 sudo vim /etc/hosts
@@ -26,7 +26,7 @@ Make sure you have updated your master server hosts file if needed so it knows h
 ### Install
 ```bash
 # Lock in hostname
-hostnamectl set-hostname {newnamehere} –static
+hostnamectl set-hostname {newnamehere}
 
 # Add puppetmaster
 sudo vim /etc/hosts
