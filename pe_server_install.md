@@ -26,8 +26,8 @@ puppet agent -t
 # Installing on Ubuntu 22.04 Linux Server: 
 ```bash
 curl -JLO 'https://pm.puppet.com/cgi-bin/download.cgi?dist=ubuntu&rel=22.04&arch=amd64&ver=latest'
-tar -xf puppet-enterprise-2023.4.0-ubuntu-22.04-amd64.tar.gz
-cd puppet-enterprise-2023.4.0-ubuntu-22.04-amd64/
+tar -xf puppet-enterprise-2023.5.0-ubuntu-22.04-amd64.tar.gz
+cd puppet-enterprise-2023.5.0-ubuntu-22.04-amd64/
 sudo ./puppet-enterprise-installer
 
 # Post install

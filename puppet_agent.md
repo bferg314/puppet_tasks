@@ -1,8 +1,8 @@
 # Puppet Config
 ## Generic Prep
 ```bash
-# Lock in hostname
-hostnamectl set-hostname {newnamehere}
+# Lock in hostname with FQDN
+hostnamectl set-hostname awesomeclient.mydomain.loc
 
 # Add puppetmaster
 sudo vim /etc/hosts
@@ -15,8 +15,8 @@ nmtui
 ## Config File
 ```ini
 [main]
-certname = {clientname}
-server = {puppetmastername}
+certname = awesomeclient.mydomain.loc
+server = greatmaster.mydomain.loc
 ```
 
 ## Puppet Master
@@ -26,7 +26,7 @@ Make sure you have updated your master server hosts file if needed so it knows h
 ### Install
 ```bash
 # Lock in hostname
-hostnamectl set-hostname {newnamehere}
+hostnamectl set-hostname awesomeclient.mydomain.loc
 
 # Add puppetmaster
 sudo vim /etc/hosts
@@ -60,7 +60,7 @@ puppet agent -t
 ```bash
 sudo vim /etc/hosts
 
-# 22.02
+# 22.04
 wget https://apt.puppet.com/puppet8-release-jammy.deb
 sudo dpkg -i puppet8-release-jammy.deb
 
